@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Duplicate Check</title>
+    <style>
+        body { font-family: Arial; padding: 40px; }
+        .test { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        input { padding: 10px; width: 300px; margin-right: 10px; }
+        button { padding: 10px 20px; cursor: pointer; }
+        .result { margin-top: 10px; padding: 10px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Duplicate Email/Phone Check</h1>
+    
+    <div class="test">
+        <h2>Test 1: Check Email</h2>
+        <input type="email" id="testEmail" placeholder="Enter email to test" value="aslam.117y@gmail.com">
+        <button onclick="testEmail()">Check Email</button>
+        <div id="emailResult"></div>
+    </div>
+    
+    <div class="test">
+        <h2>Test 2: Check Phone</h2>
+        <input type="tel" id="testPhone" placeholder="Enter phone to test" value="9876543210">
+        <button onclick="testPhone()">Check Phone</button>
+        <div id="phoneResult"></div>
+    </div>
+
+    <script>
+        async function testEmail() {
+            const email = document.getElementById('testEmail').value;
+            const resultDiv = document.getElementById('emailResult');
+            
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('/api/email-otp/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await response.json();
+                
+                console.log('Email check response:', data);
+                
+                if (data.success) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `✅ ${data.message}`;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `❌ ${data.message}`;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+                console.error(error);
+            }
+        }
+        
+        async function testPhone() {
+            const phone = document.getElementById('testPhone').value;
+            const resultDiv = document.getElementById('phoneResult');
+            
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('/api/email-otp/check-phone', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ phone })
+                });
+                
+                const data = await response.json();
+                
+                console.log('Phone check response:', data);
+                
+                if (data.success) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `✅ ${data.message}`;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `❌ ${data.message}`;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
