@@ -1,41 +1,37 @@
 {
     "$schema": "https://json.schemastore.org/package.json",
-    "private": true,
+    "name": "shoecommerce2",
+    "version": "1.0.0",
+    "description": "Laravel + Vite + Tailwind + Payment Integration",
+    "main": "index.js",
     "type": "module",
+    "private": true,
     "scripts": {
         "build": "vite build",
         "dev": "vite",
         "start": "node index.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
+        "express": "^4.19.2",
+        "axios": "^1.11.0"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
         "@tailwindcss/vite": "^4.0.0",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
-        "axios": "^1.11.0",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^2.0.0",
         "postcss": "^8.4.31",
         "tailwindcss": "^3.1.0",
         "vite": "^7.0.4"
     },
-    "name": "shoecommerce2",
-    "version": "1.0.0",
-    "description": "Laravel + Vite + Tailwind + Payment Integration",
-    "main": "index.js",
     "directories": {
         "test": "tests"
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.20.2",
-        "cors": "^2.8.5",
-        "express": "^4.19.2"
-    }
- HEAD
+    "license": "ISC"
 }
-
-}
- ae3509d26b152da62cc8c1f681d77d502539bbc1
