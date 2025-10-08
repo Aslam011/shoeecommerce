@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShoeCommerce - Register</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0a0f1d;
+      color: #e8eef6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+    .card {
+      background: #16181d;
+      padding: 30px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    h1 { margin-bottom: 20px; font-size: 22px; text-align: center; }
+    label { 
+      display: block; 
+      margin: 12px 0 5px; 
+      font-size: 14px;
+      font-weight: 500;
+    }
+    input {
+      width: 100%; 
+      padding: 10px;
+      border: 1px solid #273142;
+      border-radius: 6px;
+      background: #0e1527;
+      color: #fff;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    input:focus {
+      outline: none;
+      border-color: #6aa3ff;
+    }
+    input.error {
+      border-color: #ff4444;
+    }
+    input.success {
+      border-color: #1a7f37;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%; 
+      padding: 12px;
+      background: linear-gradient(180deg, #6aa3ff, #4c8dff);
+      border: none; 
+      border-radius: 6px;
+      font-weight: bold; 
+      color: #fff;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+    button:hover:not(:disabled) { 
+      filter: brightness(1.1); 
+      transform: translateY(-1px);
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .otp-container {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .otp-container input {
+      flex: 1;
+    }
+    .otp-container button {
+      flex: 0 0 auto;
+      width: auto;
+      padding: 10px 20px;
+      margin: 0;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+    .link { 
+      margin-top: 15px; 
+      text-align: center; 
+      font-size: 14px; 
+    }
+    .link a { 
+      color: #6aa3ff; 
+      text-decoration: none; 
+    }
+    .link a:hover { 
+      text-decoration: underline; 
+    }
+    .message {
+      margin-top: 5px;
+      font-size: 12px;
+      min-height: 16px;
+    }
+    .error-msg {
+      color: #ff4444;
+    }
+    .success-msg {
+      color: #1a7f37;
+    }
+    .info-msg {
+      color: #6aa3ff;
+    }
+    .otp-sent {
+      background: #1a7f37 !important;
+    }
+    .verified-badge {
+      display: inline-block;
+      margin-left: 8px;
+      color: #1a7f37;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🛍️ Create Account</h1>
+    <form id="registerForm" method="POST" action="register.php">
+      
+      <label for="fullName">Full Name</label>
+      <input 
+        type="text" 
+        name="fullName" 
+        id="fullName" 
+        required 
+        placeholder="John Doe"
+        autocomplete="name"
+      />
+      <div id="nameMsg" class="message"></div>
+
+      <label for="email">
+        Email Address
+        <span id="emailVerifiedBadge" class="verified-badge" style="display: none;">✓ Verified</span>
+      </label>
+      <div class="otp-container">
+        <input 
+          type="email" 
+          name="email" 
+          id="email" 
+          required 
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+        <button type="button" id="sendOtpBtn">Send OTP</button>
+      </div>
+      <div id="emailMsg" class="message"></div>
+
+      <label for="otpCode">Email OTP Code</label>
+      <input 
+        type="text" 
+        name="otpCode" 
+        id="otpCode" 
+        maxlength="6" 
+        placeholder="Enter 6-digit OTP"
+        autocomplete="off"
+      />
+      <div id="otpMsg" class="message"></div>
+
+      <label for="phone">Phone Number</label>
+      <input 
+        type="tel" 
+        name="phone" 
+        id="phone" 
+        required 
+        maxlength="10" 
+        placeholder="10-digit mobile number"
+        autocomplete="tel"
+      />
+      <div id="phoneMsg" class="message"></div>
+
+      <label for="password">Password</label>
+      <input 
+        type="password" 
+        name="password" 
+        id="password" 
+        required 
+        minlength="6" 
+        placeholder="Minimum 6 characters"
+        autocomplete="new-password"
+      />
+      <div id="passwordMsg" class="message"></div>
+
+      <label for="confirm">Confirm Password</label>
+      <input 
+        type="password" 
+        name="confirm" 
+        id="confirm" 
+        required 
+        placeholder="Re-enter password"
+        autocomplete="new-password"
+      />
+      <div id="confirmMsg" class="message"></div>
+
+      <button type="submit" id="registerBtn">Register</button>
+    </form>
+    <div class="link">
+      Already have an account? <a href="login.php">Login</a>
+    </div>
+  </div>
+
+  <script src="email-otp-frontend.js"></script>
+</body>
+</html>

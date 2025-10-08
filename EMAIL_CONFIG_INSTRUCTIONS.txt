@@ -1,0 +1,39 @@
+============================================
+📧 EMAIL CONFIGURATION FOR SHOECOMMERCE
+============================================
+
+STEP 1: Open your .env file
+Location: C:\xampp\htdocs\shoecommerce2\.env
+
+STEP 2: Find the MAIL section and replace it with these EXACT lines:
+(Delete any existing MAIL_ lines and add these)
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=shoecommerce2@gmail.com
+MAIL_PASSWORD="rrpr dsht kkwh kuok"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=shoecommerce2@gmail.com
+MAIL_FROM_NAME="ShoeCommerce"
+
+STEP 3: Save the .env file
+
+STEP 4: Clear Laravel cache by running this command in terminal:
+cd C:\xampp\htdocs\shoecommerce2
+php artisan config:clear
+
+STEP 5: Test by registering on:
+http://localhost/customer/register
+
+============================================
+IMPORTANT NOTES:
+============================================
+✓ Keep the app password in quotes: "rrpr dsht kkwh kuok"
+✓ Use smtp.gmail.com (not gmail.com)
+✓ Port must be 587
+✓ Encryption must be tls (not ssl)
+
+After completing these steps, come back and tell me "Done"
+and I'll verify the email is working!
+============================================
