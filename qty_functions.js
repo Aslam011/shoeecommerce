@@ -20,4 +20,8 @@ function updateQty(input) {
     const updateBtn = form.querySelector('.update-btn');
     if (updateBtn) updateBtn.disabled = false;
   }
+ HEAD
 }
+
+}
+ ae3509d26b152da62cc8c1f681d77d502539bbc1
